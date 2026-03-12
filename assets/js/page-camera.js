@@ -15,16 +15,16 @@ const lensMotionAllowed = !CAMERA_MOTION.reduced && !CAMERA_MOTION.touchLike && 
 if (gallery && sceneButtons.length) {
   const scenes = [
     {
-      src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1800&q=80',
-      alt: 'Scène urbaine détaillée de nuit'
+      src: 'assets/img/camera-scene-urban.svg',
+      alt: 'Scène urbaine premium en basse lumière'
     },
     {
-      src: 'https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1800&q=80',
-      alt: 'Portrait naturel avec séparation du sujet'
+      src: 'assets/img/camera-scene-portrait.svg',
+      alt: 'Portrait premium au rendu naturel et précis'
     },
     {
-      src: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80',
-      alt: 'Architecture grand-angle à fort contraste'
+      src: 'assets/img/camera-scene-night.svg',
+      alt: 'Scène nocturne riche en contraste avec Jarvis Vision'
     }
   ];
 

@@ -1,0 +1,14 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect x="110" y="110" width="1380" height="680" rx="46" fill="url(#frame)"/>
+<rect x="190" y="190" width="640" height="520" rx="34" fill="url(#pane1)"/>
+<rect x="870" y="190" width="540" height="240" rx="34" fill="url(#pane2)"/>
+<rect x="870" y="470" width="540" height="240" rx="34" fill="url(#pane3)"/>
+<defs>
+<linearGradient id="bg" x1="120" y1="0" x2="1520" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#05070D"/><stop offset="1" stop-color="#0F1A31"/></linearGradient>
+<linearGradient id="frame" x1="140" y1="110" x2="1390" y2="790" gradientUnits="userSpaceOnUse"><stop stop-color="#141E33"/><stop offset="1" stop-color="#0E1625"/></linearGradient>
+<linearGradient id="pane1" x1="190" y1="190" x2="830" y2="710" gradientUnits="userSpaceOnUse"><stop stop-color="#2A63B6"/><stop offset="1" stop-color="#153568"/></linearGradient>
+<linearGradient id="pane2" x1="870" y1="190" x2="1410" y2="430" gradientUnits="userSpaceOnUse"><stop stop-color="#6A98DA"/><stop offset="1" stop-color="#2C5088"/></linearGradient>
+<linearGradient id="pane3" x1="870" y1="470" x2="1410" y2="710" gradientUnits="userSpaceOnUse"><stop stop-color="#1D3660"/><stop offset="1" stop-color="#10203A"/></linearGradient>
+</defs>
+</svg>

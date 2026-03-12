@@ -1,0 +1,34 @@
+<svg width="1900" height="950" viewBox="0 0 1900 950" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1900" height="950" fill="url(#bg)"/>
+<ellipse cx="975" cy="716" rx="560" ry="108" fill="#0B1320"/>
+<g filter="url(#shadow)">
+<rect x="369" y="188" width="1160" height="430" rx="110" fill="url(#metal)"/>
+<rect x="423" y="234" width="1052" height="338" rx="84" fill="url(#in)"/>
+<circle cx="1336" cy="294" r="56" fill="url(#lens)"/>
+<circle cx="1198" cy="294" r="56" fill="url(#lens)"/>
+<circle cx="1267" cy="364" r="56" fill="url(#lens)"/>
+</g>
+<rect x="492" y="694" width="916" height="8" rx="4" fill="#5D708F" fill-opacity="0.6"/>
+<defs>
+<linearGradient id="bg" x1="168" y1="61" x2="1701" y2="880" gradientUnits="userSpaceOnUse">
+<stop stop-color="#05070C"/>
+<stop offset="1" stop-color="#0D1628"/>
+</linearGradient>
+<linearGradient id="metal" x1="404" y1="200" x2="1485" y2="654" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E6E9EF"/>
+<stop offset="0.46" stop-color="#8F9AAF"/>
+<stop offset="1" stop-color="#D0D5E1"/>
+</linearGradient>
+<linearGradient id="in" x1="450" y1="234" x2="1279" y2="586" gradientUnits="userSpaceOnUse">
+<stop stop-color="#18263F"/>
+<stop offset="1" stop-color="#080E18"/>
+</linearGradient>
+<radialGradient id="lens" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1267 294) rotate(90) scale(56)">
+<stop stop-color="#B6E1FF"/>
+<stop offset="1" stop-color="#2F4D80"/>
+</radialGradient>
+<filter id="shadow" x="326" y="146" width="1246" height="530" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#000" flood-opacity="0.5"/>
+</filter>
+</defs>
+</svg>

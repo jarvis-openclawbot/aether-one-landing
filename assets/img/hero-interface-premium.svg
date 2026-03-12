@@ -1,0 +1,76 @@
+<svg width="1400" height="2660" viewBox="0 0 1400 2660" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1400" height="2660" rx="84" fill="url(#bg)"/>
+<g filter="url(#f1)">
+  <rect x="110" y="170" width="1180" height="510" rx="52" fill="url(#card1)"/>
+</g>
+<rect x="176" y="254" width="430" height="44" rx="22" fill="#ECF3FF" fill-opacity="0.84"/>
+<rect x="176" y="330" width="730" height="30" rx="15" fill="#BDD3FF" fill-opacity="0.55"/>
+<rect x="176" y="388" width="560" height="30" rx="15" fill="#BDD3FF" fill-opacity="0.4"/>
+<g filter="url(#f2)">
+  <rect x="110" y="734" width="570" height="860" rx="50" fill="url(#card2)"/>
+</g>
+<g filter="url(#f3)">
+  <rect x="720" y="734" width="570" height="400" rx="50" fill="url(#card3)"/>
+</g>
+<g filter="url(#f3)">
+  <rect x="720" y="1184" width="570" height="410" rx="50" fill="url(#card4)"/>
+</g>
+<g opacity="0.85">
+  <circle cx="397" cy="1024" r="188" fill="url(#ring)"/>
+  <circle cx="397" cy="1024" r="122" fill="#0D1730"/>
+  <circle cx="397" cy="1024" r="79" fill="url(#lens)"/>
+</g>
+<rect x="110" y="1646" width="1180" height="894" rx="52" fill="url(#foot)"/>
+<rect x="176" y="1730" width="430" height="36" rx="18" fill="#D4E5FF" fill-opacity="0.74"/>
+<rect x="176" y="1792" width="1040" height="26" rx="13" fill="#9FB9EA" fill-opacity="0.47"/>
+<rect x="176" y="1842" width="990" height="26" rx="13" fill="#9FB9EA" fill-opacity="0.34"/>
+<rect x="176" y="1927" width="1044" height="480" rx="38" fill="url(#cta)"/>
+<defs>
+<linearGradient id="bg" x1="186" y1="114" x2="1302" y2="2576" gradientUnits="userSpaceOnUse">
+<stop stop-color="#081221"/>
+<stop offset="0.45" stop-color="#0B1B36"/>
+<stop offset="1" stop-color="#05070D"/>
+</linearGradient>
+<linearGradient id="card1" x1="198" y1="170" x2="1115" y2="854" gradientUnits="userSpaceOnUse">
+<stop stop-color="#234F98"/>
+<stop offset="1" stop-color="#122442"/>
+</linearGradient>
+<linearGradient id="card2" x1="150" y1="770" x2="680" y2="1594" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C3D74"/>
+<stop offset="1" stop-color="#0B1429"/>
+</linearGradient>
+<linearGradient id="card3" x1="770" y1="734" x2="1260" y2="1210" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5F89C9"/>
+<stop offset="1" stop-color="#213A66"/>
+</linearGradient>
+<linearGradient id="card4" x1="747" y1="1184" x2="1280" y2="1600" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1E335A"/>
+<stop offset="1" stop-color="#111C33"/>
+</linearGradient>
+<radialGradient id="ring" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397 1024) rotate(90) scale(188)">
+<stop stop-color="#9DC5FF"/>
+<stop offset="1" stop-color="#3A5B8B" stop-opacity="0.2"/>
+</radialGradient>
+<radialGradient id="lens" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(397 1024) rotate(90) scale(79)">
+<stop stop-color="#DFF2FF"/>
+<stop offset="1" stop-color="#2B4877"/>
+</radialGradient>
+<linearGradient id="foot" x1="165" y1="1646" x2="1274" y2="2569" gradientUnits="userSpaceOnUse">
+<stop stop-color="#101E3A"/>
+<stop offset="1" stop-color="#091222"/>
+</linearGradient>
+<linearGradient id="cta" x1="176" y1="1927" x2="1100" y2="2489" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2A72DB"/>
+<stop offset="1" stop-color="#184694"/>
+</linearGradient>
+<filter id="f1" x="82" y="148" width="1236" height="566" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity="0.35"/>
+</filter>
+<filter id="f2" x="88" y="716" width="614" height="904" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feDropShadow dx="0" dy="16" stdDeviation="11" flood-color="#000" flood-opacity="0.38"/>
+</filter>
+<filter id="f3" x="698" y="716" width="614" height="446" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feDropShadow dx="0" dy="13" stdDeviation="10" flood-color="#000" flood-opacity="0.32"/>
+</filter>
+</defs>
+</svg>

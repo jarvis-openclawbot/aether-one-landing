@@ -1,0 +1,22 @@
+<svg width="1900" height="950" viewBox="0 0 1900 950" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1900" height="950" rx="0" fill="url(#bg)"/>
+<rect x="170" y="140" width="1560" height="670" rx="52" fill="url(#frame)"/>
+<rect x="244" y="220" width="520" height="510" rx="38" fill="url(#p1)"/>
+<rect x="806" y="220" width="850" height="235" rx="38" fill="url(#p2)"/>
+<rect x="806" y="495" width="850" height="235" rx="38" fill="url(#p3)"/>
+<circle cx="504" cy="474" r="130" fill="url(#orb)"/>
+<defs>
+<linearGradient id="bg" x1="107" y1="43" x2="1767" y2="867" gradientUnits="userSpaceOnUse">
+<stop stop-color="#DEE5EF"/>
+<stop offset="1" stop-color="#C7D1E3"/>
+</linearGradient>
+<linearGradient id="frame" x1="234" y1="140" x2="1506" y2="939" gradientUnits="userSpaceOnUse">
+<stop stop-color="#151D2E"/>
+<stop offset="1" stop-color="#101726"/>
+</linearGradient>
+<linearGradient id="p1" x1="244" y1="220" x2="785" y2="730" gradientUnits="userSpaceOnUse"><stop stop-color="#274D8A"/><stop offset="1" stop-color="#14263F"/></linearGradient>
+<linearGradient id="p2" x1="838" y1="220" x2="1656" y2="524" gradientUnits="userSpaceOnUse"><stop stop-color="#5E89C9"/><stop offset="1" stop-color="#274D87"/></linearGradient>
+<linearGradient id="p3" x1="856" y1="495" x2="1670" y2="771" gradientUnits="userSpaceOnUse"><stop stop-color="#1B3158"/><stop offset="1" stop-color="#10203B"/></linearGradient>
+<radialGradient id="orb" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(504 474) rotate(90) scale(130)"><stop stop-color="#E3F4FF"/><stop offset="1" stop-color="#5E89C9"/></radialGradient>
+</defs>
+</svg>
