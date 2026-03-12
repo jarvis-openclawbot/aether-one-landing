@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 const pageMap = {
   'index.html': 'accueil',
   '': 'accueil',
@@ -10,21 +12,14 @@ const pageMap = {
 };
 
 const MOTION = {
-  // Global switches
   reduced: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   touchLike: window.matchMedia('(pointer: coarse)').matches,
   mobileWidth: window.matchMedia('(max-width: 760px)').matches,
-
-  // Timeline-like reveal system
   revealThreshold: 0.18,
   revealRootMargin: '0px 0px -7% 0px',
   revealStaggerMs: 90,
-
-  // Scroll depth/parallax (kept conservative for performance)
   depthMaxPx: 36,
   depthEase: 0.12,
-
-  // Device tilt / hero micro interaction
   tiltLerp: 0.1,
   tiltXRange: 15,
   tiltYRange: 11,
@@ -36,13 +31,39 @@ const motionAllowed = !MOTION.reduced;
 const advancedMotionAllowed = motionAllowed && !MOTION.touchLike && !MOTION.mobileWidth;
 const current = document.body.dataset.page || pageMap[location.pathname.split('/').pop()] || 'accueil';
 
+const header = document.querySelector('.site-header');
+const subnav = document.querySelector('.subnav');
+const root = document.documentElement;
+const setStickyMetrics = () => {
+  const headerHeight = header ? Math.round(header.getBoundingClientRect().height) : 64;
+  root.style.setProperty('--header-height', `${headerHeight}px`);
+  if (subnav) root.style.setProperty('--subnav-height', `${Math.round(subnav.getBoundingClientRect().height)}px`);
+};
+setStickyMetrics();
+window.addEventListener('resize', setStickyMetrics);
+window.addEventListener('orientationchange', setStickyMetrics);
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (menuToggle && navLinks) {
+  const closeMenu = () => {
+    document.body.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+  menuToggle.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+}
+
 document.querySelectorAll('.nav-links a').forEach((a) => {
   const href = a.getAttribute('href');
   const key = pageMap[href] || href?.replace('.html', '');
   if (key === current) a.setAttribute('aria-current', 'page');
 });
 
-const header = document.querySelector('.site-header');
 const progress = document.querySelector('.progress-bar');
 const depthTargets = advancedMotionAllowed
   ? Array.from(document.querySelectorAll('.device-stage, .showcase img, .card, .camera-lens'))
@@ -62,8 +83,6 @@ const applyScrollState = () => {
     progress.style.transform = `scaleX(${Math.max(0, Math.min(1, p))})`;
   }
 
-  // Depth/parallax: JS writes a single custom prop, CSS composes transform.
-  // This avoids multiple inline transform overwrites and is easy to tune.
   if (depthTargets.length) {
     const vh = window.innerHeight || 1;
     depthTargets.forEach((el, index) => {
@@ -103,7 +122,7 @@ if (subnavLinks.length) {
     let activeId = '';
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
-      if (rect.top <= 140) activeId = section.id;
+      if (rect.top <= ((header?.getBoundingClientRect().height || 64) + 84)) activeId = section.id;
     });
 
     subnavLinks.forEach((link) => {
@@ -118,7 +137,7 @@ if (subnavLinks.length) {
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      const offset = 120;
+      const offset = (header?.getBoundingClientRect().height || 64) + (subnav?.getBoundingClientRect().height || 0) + 12;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: MOTION.reduced ? 'auto' : 'smooth' });
     });
@@ -128,14 +147,12 @@ if (subnavLinks.length) {
   updateActiveSubnav();
 }
 
-// Staged reveals: assigns an incremental delay per local group for a premium timeline feel.
 const reveals = document.querySelectorAll('.reveal');
 if (motionAllowed && reveals.length) {
   const groupCount = new WeakMap();
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-
       const parent = entry.target.parentElement || document.body;
       const localIndex = groupCount.get(parent) || 0;
       groupCount.set(parent, localIndex + 1);

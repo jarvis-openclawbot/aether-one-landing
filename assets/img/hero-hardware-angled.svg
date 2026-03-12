@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 1500'>
+<defs><linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#03050b'/><stop offset='1' stop-color='#111a2c'/></linearGradient><linearGradient id='metal' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#d9e0ea'/><stop offset='1' stop-color='#7c889a'/></linearGradient></defs>
+<rect width='1200' height='1500' fill='url(#bg)'/><ellipse cx='760' cy='280' rx='340' ry='180' fill='#1d3566' opacity='.35'/>
+<g transform='translate(255 180) rotate(-12 340 560)'><rect x='120' y='80' width='560' height='1080' rx='70' fill='url(#metal)'/><rect x='145' y='105' width='510' height='1030' rx='58' fill='#090c14'/><circle cx='208' cy='190' r='16' fill='#1f2c46'/><rect x='170' y='180' width='460' height='900' rx='44' fill='url(#bg)'/><circle cx='245' cy='245' r='84' fill='#1d2433'/><circle cx='245' cy='245' r='53' fill='#5b6a82'/><circle cx='245' cy='245' r='22' fill='#0e131e'/></g>
+<rect x='0' y='0' width='1200' height='1500' fill='white' opacity='.04'/>
+</svg>

@@ -11,34 +11,36 @@
 <body data-page="contact">
 <a class="skip-link" href="#main-content">Aller au contenu</a>
 <div class="progress-bar" aria-hidden="true"></div>
-<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Jarvis</a><nav class="nav-links" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="produit.html">Produit</a><a href="camera.html">Caméra</a><a href="offres.html">Offres</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav><a class="btn btn-primary" href="offres.html">Voir les offres</a></div></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Jarvis accueil">Jarvis</a><button class="menu-toggle" type="button" aria-expanded="false" aria-label="Ouvrir le menu">Menu</button><nav class="nav-links" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="produit.html">Produit</a><a href="camera.html">Caméra</a><a href="offres.html">Offres</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a><a class="btn btn-primary" href="offres.html">Précommander</a></nav><a class="btn btn-primary" href="offres.html">Précommander</a></div></header>
 <main id="main-content" class="container">
   <section class="section reveal">
     <p class="section-kicker">Contact</p>
     <h1 class="section-title">Planifiez votre démo Jarvis en 2 minutes.</h1>
-    <p class="section-copy">Formulaire de démonstration front-end. Les données ne sont pas envoyées vers un serveur.</p>
+    <p class="section-copy">Un expert Jarvis vous répond sous 4 h ouvrées. Vos informations sont traitées selon notre politique RGPD.</p>
   </section>
 
   <section class="section reveal">
     <div class="camera-panel" style="margin-bottom:1rem">
       <p class="section-kicker">Support commercial</p>
-      <p class="section-copy">Besoin d’une réponse rapide ? Écrivez à <a href="mailto:contact@jarvis-mobile.fr">contact@jarvis-mobile.fr</a> — réponse moyenne sous 4 h ouvrées.</p>
+      <p class="section-copy">Besoin d’une réponse rapide ? Écrivez à <a href="mailto:contact@jarvis-mobile.fr">contact@jarvis-mobile.fr</a> — réponse garantie sous 4 h ouvrées.</p>
+      <div class="showcase" style="margin-top:1rem"><img src="assets/img/contact-concierge-desk.svg" alt="Espace d’accueil premium Jarvis" loading="lazy"></div>
     </div>
     <form class="form" id="demo-form" novalidate>
       <div class="form-row">
-        <div><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" required /></div>
-        <div><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+        <div><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" required /><small id="nom-error" class="form-note"></small></div>
+        <div><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required /><small id="email-error" class="form-note"></small></div>
       </div>
       <div class="form-row" style="margin-top:1rem">
-        <div><label for="societe">Société</label><input id="societe" name="societe" autocomplete="organization" required /></div>
-        <div><label for="offre">Offre envisagée</label><select id="offre" name="offre" required><option value="">Choisir…</option><option>Jarvis One</option><option>Jarvis One Pro</option><option>Jarvis One Signature</option></select></div>
+        <div><label for="societe">Société</label><input id="societe" name="societe" autocomplete="organization" required /><small id="societe-error" class="form-note"></small></div>
+        <div><label for="offre">Offre envisagée</label><select id="offre" name="offre" required><option value="">Choisir…</option><option>Jarvis One</option><option>Jarvis One Pro</option><option>Jarvis One Signature</option></select><small id="offre-error" class="form-note"></small></div>
       </div>
-      <div style="margin-top:1rem"><label for="message">Votre besoin</label><textarea id="message" name="message" required placeholder="Ex. : équipement d’une équipe commerciale de 20 personnes."></textarea></div>
+      <div style="margin-top:1rem"><label for="message">Votre besoin</label><textarea id="message" name="message" required placeholder="Ex. : équipement d’une équipe commerciale de 20 personnes."></textarea><small id="message-error" class="form-note"></small></div>
       <div style="margin-top:1rem"><button class="btn btn-primary" type="submit">Envoyer la demande</button></div>
       <p class="form-note">En validant, vous acceptez d’être recontacté par l’équipe Jarvis.</p>
       <p id="form-status" class="form-status" aria-live="polite"></p>
     </form>
   </section>
+  <div class="mobile-sticky-cta"><a class="btn btn-primary" href="offres.html">Précommander dès 999 €</a></div>
 </main>
 <footer class="site-footer"><div class="footer-inner"><span>© 2026 Jarvis. Tous droits réservés.</span><div class="footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></div></footer>
 </body></html>

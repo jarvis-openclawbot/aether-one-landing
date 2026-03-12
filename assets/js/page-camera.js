@@ -14,18 +14,9 @@ const lensMotionAllowed = !CAMERA_MOTION.reduced && !CAMERA_MOTION.touchLike && 
 
 if (gallery && sceneButtons.length) {
   const scenes = [
-    {
-      src: 'assets/img/camera-scene-urban.svg',
-      alt: 'Scène urbaine premium en basse lumière'
-    },
-    {
-      src: 'assets/img/camera-scene-portrait.svg',
-      alt: 'Portrait premium au rendu naturel et précis'
-    },
-    {
-      src: 'assets/img/camera-scene-night.svg',
-      alt: 'Scène nocturne riche en contraste avec Jarvis Vision'
-    }
+    { src: 'assets/img/camera-urban-night.svg', alt: 'Scène urbaine nocturne au rendu naturel Jarvis Vision' },
+    { src: 'assets/img/camera-portrait-skin.svg', alt: 'Portrait avec tons de peau naturels et texture fidèle' },
+    { src: 'assets/img/camera-lowlight-motion.svg', alt: 'Scène en faible lumière avec mouvement stabilisé' }
   ];
 
   sceneButtons.forEach((btn) => {
@@ -38,9 +29,9 @@ if (gallery && sceneButtons.length) {
       if (!CAMERA_MOTION.reduced && gallery.animate) {
         gallery.animate([
           { opacity: 1, transform: 'scale(1)' },
-          { opacity: 0.35, transform: 'scale(1.015)' },
+          { opacity: 0.45, transform: 'scale(1.012)' },
           { opacity: 1, transform: 'scale(1)' }
-        ], { duration: 460, easing: 'cubic-bezier(.22,.61,.36,1)' });
+        ], { duration: 420, easing: 'cubic-bezier(.22,.61,.36,1)' });
       }
 
       const next = new Image();
@@ -53,24 +44,28 @@ if (gallery && sceneButtons.length) {
   });
 }
 
-if (lens && !CAMERA_MOTION.reduced) {
-  // Scroll-driven lens energy and depth pulse.
+if (lens && lensMotionAllowed) {
+  let rafScheduled = false;
+  let latestProgress = 0;
+
+  const renderLens = () => {
+    const progress = latestProgress;
+    lens.style.filter = `saturate(${1 + progress * 0.24}) brightness(${1 + progress * 0.04})`;
+    lens.style.setProperty('--lens-scale', (0.96 + progress * 0.08).toFixed(3));
+    lens.style.setProperty('--depth-y', `${(progress * -6).toFixed(2)}px`);
+    rafScheduled = false;
+  };
+
   window.addEventListener('scroll', () => {
     const rect = lens.getBoundingClientRect();
     const vh = window.innerHeight || 1;
-    const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
-    const scale = 0.94 + progress * 0.1;
-    lens.style.filter = `saturate(${1 + progress * 0.32}) brightness(${1 + progress * 0.05})`;
-
-    lens.style.setProperty('--lens-scale', scale.toFixed(3));
-    if (lensMotionAllowed) {
-      lens.style.setProperty('--depth-y', `${(progress * -8).toFixed(2)}px`);
+    latestProgress = Math.max(0, Math.min(1, 1 - rect.top / vh));
+    if (!rafScheduled) {
+      rafScheduled = true;
+      requestAnimationFrame(renderLens);
     }
   }, { passive: true });
-}
 
-if (lens && lensMotionAllowed) {
-  // Small camera-lens "alive" micro motion following pointer, heavily eased.
   let tx = 0;
   let ty = 0;
   let cx = 0;
