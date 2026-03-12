@@ -412,12 +412,16 @@ textarea { min-height: 130px; resize: vertical; }
   background: radial-gradient(circle at 70% 20%, rgba(112,149,255,.22), rgba(8,10,18,.94) 60%);
 }
 .hero-device-photo {
-  width: 100%;
+  width: min(94%, 860px);
   height: auto;
   display: block;
   border-radius: 30px;
   object-fit: cover;
-  filter: saturate(1.04) contrast(1.03);
+  filter: saturate(1.06) contrast(1.04);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--hero-tilt-x, -4deg)) rotateY(var(--hero-tilt-y, 6deg)) translateY(var(--hero-lift, 0px));
+  transition: transform 220ms cubic-bezier(.22,.61,.36,1), filter 200ms ease;
+  box-shadow: 0 36px 110px rgba(0,0,0,.48), 0 0 0 1px rgba(255,255,255,.09) inset;
 }
 .hero-3d-stage {
   perspective: 1800px;
