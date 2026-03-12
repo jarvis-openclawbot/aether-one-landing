@@ -1,6 +1,6 @@
 const gallery = document.getElementById('gallery-image');
 const sceneButtons = document.querySelectorAll('[data-scene]');
-const lens = document.querySelector('.camera-lens');
+const lens = document.querySelector('.camera-lens, .lens-stack');
 
 const CAMERA_MOTION = {
   reduced: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -43,10 +43,12 @@ if (gallery && sceneButtons.length) {
         ], { duration: 460, easing: 'cubic-bezier(.22,.61,.36,1)' });
       }
 
-      setTimeout(() => {
+      const next = new Image();
+      next.onload = () => {
         gallery.src = scenes[id].src;
         gallery.alt = scenes[id].alt;
-      }, 140);
+      };
+      next.src = scenes[id].src;
     });
   });
 }

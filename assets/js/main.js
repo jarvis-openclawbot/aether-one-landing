@@ -93,6 +93,41 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 applyScrollState();
 
+const subnavLinks = Array.from(document.querySelectorAll('.subnav-links a[href^="#"]'));
+if (subnavLinks.length) {
+  const sections = subnavLinks
+    .map((a) => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  const updateActiveSubnav = () => {
+    let activeId = '';
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 140) activeId = section.id;
+    });
+
+    subnavLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === `#${activeId}`;
+      if (isActive) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  subnavLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 120;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: MOTION.reduced ? 'auto' : 'smooth' });
+    });
+  });
+
+  window.addEventListener('scroll', updateActiveSubnav, { passive: true });
+  updateActiveSubnav();
+}
+
 // Staged reveals: assigns an incremental delay per local group for a premium timeline feel.
 const reveals = document.querySelectorAll('.reveal');
 if (motionAllowed && reveals.length) {
