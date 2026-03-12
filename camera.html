@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Caméra — Jarvis Vision</title>
-  <meta name="description" content="Module caméra Jarvis Vision : 48 Mpx, stabilisation cinématique et rendu naturel jour/nuit." />
+  <meta name="description" content="Jarvis Vision : triple module, vidéo 4K stabilisée et rendu naturel en basse lumière." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" /><script defer src="assets/js/main.js"></script><script defer src="assets/js/page-camera.js"></script>
@@ -11,35 +11,41 @@
 <body data-page="camera">
 <div class="progress-bar" aria-hidden="true"></div>
 <header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Jarvis</a><nav class="nav-links" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="produit.html">Produit</a><a href="camera.html">Caméra</a><a href="offres.html">Offres</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav><a class="btn btn-primary" href="offres.html">Précommander</a></div></header>
-<div class="subnav"><div class="inner"><strong>Jarvis Vision</strong><nav class="subnav-links"><a href="#optique">Optique</a><a href="#video">Vidéo</a><a href="#galerie">Galerie</a></nav></div></div>
-
-<main>
-  <section id="optique" class="section container reveal">
-    <p class="kicker">Système caméra</p>
-    <h1>La lumière,<br>exactement comme vous l’avez vue.</h1>
-    <p class="lead">Capteur principal 1/1.3", ultra grand-angle corrigé en temps réel et téléobjectif x5. Jarvis Vision préserve les textures au lieu de les lisser.</p>
+<main class="container">
+  <section class="section reveal">
+    <p class="section-kicker">Caméra Jarvis Vision</p>
+    <h1 class="section-title">Une image fidèle, même quand la scène bouge.</h1>
+    <p class="section-copy">Capteur principal 1/1.3", ultra grand-angle corrigé en direct et téléobjectif x5. Le rendu conserve la matière, pas seulement la netteté.</p>
   </section>
 
-  <section class="full-bleed panel-dark">
-    <div class="container reveal" style="text-align:center">
-      <div class="camera-lens" aria-hidden="true"><span class="lens-sweep"></span></div>
-      <h2 id="video">Stabilisation cinéma 4K 60.</h2>
-      <p class="lead" style="margin-inline:auto">Mouvement compensé sur plusieurs axes, cadence verrouillée et hautes lumières plus propres en faible luminosité.</p>
-    </div>
-  </section>
-
-  <section id="galerie" class="full-bleed panel-light">
-    <div class="container reveal">
-      <p class="kicker">Scènes de démonstration</p>
-      <div class="showcase"><img id="gallery-image" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1800&q=80" alt="Scène urbaine détaillée de nuit" loading="lazy" /></div>
-      <div class="hero-actions" role="group" aria-label="Choix de scène" style="justify-content:flex-start;margin-top:1rem">
-        <button type="button" class="btn btn-secondary" data-scene="0" aria-pressed="true">Urbain nuit</button>
-        <button type="button" class="btn btn-secondary" data-scene="1" aria-pressed="false">Portrait</button>
-        <button type="button" class="btn btn-secondary" data-scene="2" aria-pressed="false">Grand-angle</button>
+  <section class="section reveal">
+    <div class="camera-panel">
+      <div class="camera-rig">
+        <div class="lens-stack" aria-hidden="true"><span class="lens-highlight"></span></div>
+        <div>
+          <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.4rem)">Stabilisation cinéma 4K.</h2>
+          <p class="section-copy">Le moteur Jarvis Vision corrige micro-vibrations et dérive de cadre. Résultat : des plans propres, même à main levée.</p>
+          <div class="metrics" style="margin-top:1rem">
+            <article class="card metric"><strong>4K 60</strong><span>HDR 10 bits</span></article>
+            <article class="card metric"><strong>x5</strong><span>Téléobjectif optique</span></article>
+            <article class="card metric"><strong>2,4x</strong><span>Plus de lumière en mode nuit</span></article>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-</main>
 
+  <section class="section reveal">
+    <p class="section-kicker">Scènes de référence</p>
+    <div class="gallery">
+      <img id="gallery-image" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=80" alt="Exemple photo urbaine prise avec Jarvis Vision" width="1400" height="875" loading="lazy" />
+    </div>
+    <div class="gallery-controls" role="group" aria-label="Choix de scène">
+      <button type="button" data-scene="0" aria-pressed="true">Urbain</button>
+      <button type="button" data-scene="1" aria-pressed="false">Portrait</button>
+      <button type="button" data-scene="2" aria-pressed="false">Nuit</button>
+    </div>
+  </section>
+</main>
 <footer class="site-footer"><div class="footer-inner"><span>© 2026 Jarvis. Tous droits réservés.</span><div class="footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></div></footer>
 </body></html>
