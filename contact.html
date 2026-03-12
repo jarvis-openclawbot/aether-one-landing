@@ -3,36 +3,41 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Jarvis</title>
-  <meta name="description" content="Contactez l'équipe Jarvis pour une démonstration produit, un devis entreprise ou une question support." />
+  <meta name="description" content="Réservez une démo Jarvis, discutez d’un déploiement entreprise ou contactez le support premium." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" /><script defer src="assets/js/main.js"></script><script defer src="assets/js/page-contact.js"></script>
 </head>
 <body data-page="contact">
+<div class="progress-bar" aria-hidden="true"></div>
 <header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Jarvis</a><nav class="nav-links" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="produit.html">Produit</a><a href="camera.html">Caméra</a><a href="offres.html">Offres</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav><a class="btn btn-primary" href="offres.html">Voir les offres</a></div></header>
-<main class="container">
-  <section class="section reveal">
-    <p class="section-kicker">Contact</p>
-    <h1 class="section-title">Réservez une démo Jarvis en moins de 2 minutes.</h1>
-    <p class="section-copy">Ce formulaire est une démonstration front-end. Aucune donnée n'est transmise vers un serveur.</p>
+
+<main>
+  <section class="section container reveal">
+    <p class="kicker">Contact</p>
+    <h1>Parlons de votre configuration idéale.</h1>
+    <p class="lead">Réponse sous 24h ouvrées par un conseiller Jarvis. Formulaire de démonstration front-end (aucune donnée envoyée serveur).</p>
   </section>
 
-  <section class="section reveal">
-    <form class="form" id="demo-form" novalidate>
-      <div class="form-row">
-        <div><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" required /></div>
-        <div><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
-      </div>
-      <div class="form-row" style="margin-top:1rem">
-        <div><label for="societe">Société</label><input id="societe" name="societe" autocomplete="organization" required /></div>
-        <div><label for="offre">Offre envisagée</label><select id="offre" name="offre" required><option value="">Choisir…</option><option>Jarvis One</option><option>Jarvis One Pro</option><option>Jarvis One Signature</option></select></div>
-      </div>
-      <div style="margin-top:1rem"><label for="message">Votre besoin</label><textarea id="message" name="message" required placeholder="Ex: déploiement pour une équipe commerciale de 20 personnes."></textarea></div>
-      <div style="margin-top:1rem"><button class="btn btn-primary" type="submit">Envoyer la demande</button></div>
-      <p class="form-note">En validant, vous acceptez d'être recontacté par l'équipe Jarvis.</p>
-      <p id="form-status" class="form-status" aria-live="polite"></p>
-    </form>
+  <section class="full-bleed panel-light">
+    <div class="container reveal">
+      <form class="form" id="demo-form" novalidate>
+        <div class="form-row">
+          <div><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" required /></div>
+          <div><label for="email">Email professionnel</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+        </div>
+        <div class="form-row" style="margin-top:1rem">
+          <div><label for="societe">Société</label><input id="societe" name="societe" autocomplete="organization" required /></div>
+          <div><label for="offre">Offre envisagée</label><select id="offre" name="offre" required><option value="">Choisir…</option><option>Jarvis One</option><option>Jarvis One Pro</option><option>Jarvis One Signature</option></select></div>
+        </div>
+        <div style="margin-top:1rem"><label for="message">Votre besoin</label><textarea id="message" name="message" required placeholder="Ex : déploiement 20 commerciaux, besoin de migration sécurisée et support prioritaire."></textarea></div>
+        <div style="margin-top:1rem"><button class="btn btn-primary" type="submit">Envoyer</button></div>
+        <p class="form-note">En validant, vous acceptez d’être recontacté par l’équipe Jarvis.</p>
+        <p id="form-status" class="form-status" aria-live="polite"></p>
+      </form>
+    </div>
   </section>
 </main>
+
 <footer class="site-footer"><div class="footer-inner"><span>© 2026 Jarvis. Tous droits réservés.</span><div class="footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="contact.html">Support</a></div></div></footer>
 </body></html>

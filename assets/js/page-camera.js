@@ -1,19 +1,20 @@
 const gallery = document.getElementById('gallery-image');
 const sceneButtons = document.querySelectorAll('[data-scene]');
+const lens = document.querySelector('.camera-lens');
 
 if (gallery && sceneButtons.length) {
   const scenes = [
     {
-      src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1400&q=80',
-      alt: "Exemple photo urbaine prise avec Jarvis Vision"
+      src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1800&q=80',
+      alt: 'Scène urbaine détaillée de nuit'
     },
     {
-      src: 'https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1400&q=80',
-      alt: 'Portrait avec profondeur de champ naturelle'
+      src: 'https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1800&q=80',
+      alt: 'Portrait naturel avec séparation du sujet'
     },
     {
-      src: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1400&q=80',
-      alt: 'Scène de nuit capturée avec le mode basse lumière Jarvis'
+      src: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80',
+      alt: 'Architecture grand-angle à fort contraste'
     }
   ];
 
@@ -23,12 +24,22 @@ if (gallery && sceneButtons.length) {
       if (!Number.isInteger(id) || !scenes[id]) return;
       sceneButtons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
       btn.setAttribute('aria-pressed', 'true');
-      gallery.style.opacity = '0.45';
+      gallery.animate([{ opacity: 1 }, { opacity: .3 }, { opacity: 1 }], { duration: 420, easing: 'ease-out' });
       setTimeout(() => {
         gallery.src = scenes[id].src;
         gallery.alt = scenes[id].alt;
-        gallery.style.opacity = '1';
       }, 130);
     });
   });
+}
+
+if (lens && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.addEventListener('scroll', () => {
+    const rect = lens.getBoundingClientRect();
+    const vh = window.innerHeight || 1;
+    const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
+    const scale = 0.92 + progress * 0.12;
+    lens.style.transform = `scale(${scale})`;
+    lens.style.filter = `saturate(${1 + progress * .35})`;
+  }, { passive: true });
 }
