@@ -411,6 +411,14 @@ textarea { min-height: 130px; resize: vertical; }
   box-shadow: 0 24px 52px rgba(0,0,0,.44);
   background: radial-gradient(circle at 70% 20%, rgba(112,149,255,.22), rgba(8,10,18,.94) 60%);
 }
+.hero-device-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 30px;
+  object-fit: cover;
+  filter: saturate(1.04) contrast(1.03);
+}
 .hero-3d-stage {
   perspective: 1800px;
   transform-style: preserve-3d;
