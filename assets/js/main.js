@@ -46,16 +46,24 @@ window.addEventListener('orientationchange', setStickyMetrics);
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 if (menuToggle && navLinks) {
+  const syncMenuA11y = (open) => {
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  };
+
   const closeMenu = () => {
     document.body.classList.remove('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
+    syncMenuA11y(false);
   };
+
   menuToggle.addEventListener('click', () => {
     const open = document.body.classList.toggle('menu-open');
-    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    syncMenuA11y(open);
   });
+
   navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  syncMenuA11y(false);
 }
 
 document.querySelectorAll('.nav-links a').forEach((a) => {

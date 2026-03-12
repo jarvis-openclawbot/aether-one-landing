@@ -325,6 +325,7 @@ textarea { min-height: 130px; resize: vertical; }
 }
 
 .header-inner { position: relative; }
+.header-cta { margin-left: auto; }
 .menu-toggle {
   display: none;
   min-height: 44px;
@@ -433,7 +434,7 @@ textarea { min-height: 130px; resize: vertical; }
 @media (max-width: 760px) {
   body.menu-open { overflow: hidden; }
   .menu-toggle { display: inline-flex; }
-  .site-header .btn.btn-primary { display: none; }
+  .site-header .header-cta { display: none; }
   .nav-links {
     position: fixed;
     top: calc(var(--header-height, 64px) + 8px);
@@ -457,4 +458,5 @@ textarea { min-height: 130px; resize: vertical; }
   .subnav .inner { align-items: flex-start; flex-direction: column; padding: .45rem 0; }
   .subnav-links { width: 100%; }
   .mobile-sticky-cta { display: block; }
+  main { padding-bottom: 5.8rem; }
 }
