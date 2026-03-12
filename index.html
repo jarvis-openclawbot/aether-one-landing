@@ -1,100 +1,82 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aether One — The future, in your hands</title>
-    <meta name="description" content="Aether One is a modern productivity device with spatial intelligence, cinematic visuals, and all-day battery life." />
-    <meta name="keywords" content="Aether One, modern tech, landing page, Apple-inspired, innovation" />
-    <meta name="author" content="Aether Labs" />
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jarvis — Intelligence mobile premium</title>
+  <meta name="description" content="Jarvis réunit design minimal, intelligence embarquée et expérience photo avancée dans un smartphone pensé pour durer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body data-page="accueil">
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="Jarvis accueil">Jarvis</a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="produit.html">Produit</a>
+      <a href="camera.html">Caméra</a>
+      <a href="offres.html">Offres</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="offres.html">Précommander</a>
+  </div>
+</header>
 
-    <meta property="og:title" content="Aether One — The future, in your hands" />
-    <meta property="og:description" content="Meet Aether One. Adaptive intelligence, precision hardware, and effortless performance." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://example.com" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Aether One — The future, in your hands" />
-    <meta name="twitter:description" content="A premium, Apple-inspired experience rebuilt for tomorrow." />
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <div class="noise"></div>
-    <header class="site-header">
-      <div class="brand">Aether</div>
-      <nav>
-        <a href="#story">Story</a>
-        <a href="#features">Features</a>
-        <a href="#experience">Experience</a>
-      </nav>
-      <button class="cta">Preorder</button>
-    </header>
-
-    <main>
-      <section class="hero reveal">
-        <div class="hero-copy">
-          <p class="eyebrow">INTRODUCING AETHER ONE</p>
-          <h1>The most personal<br />computer we’ve ever built.</h1>
-          <p class="subtext">
-            Designed with sculpted aluminum, ambient AI, and kinetic interfaces that feel alive.
-            Precision meets imagination.
-          </p>
-          <div class="hero-actions">
-            <a href="#features" class="btn primary">Explore</a>
-            <a href="#experience" class="btn ghost">Watch film</a>
-          </div>
+<main class="container">
+  <section class="hero">
+    <div class="reveal">
+      <p class="section-kicker">Nouveau • Jarvis One</p>
+      <h1>La performance mobile,<br>dans sa forme la plus pure.</h1>
+      <p>Un smartphone premium conçu en France, avec une autonomie stable, une capture vidéo cinématique et une interface ultra fluide. Sans surcharge. Sans compromis.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="produit.html">Découvrir Jarvis One</a>
+        <a class="btn btn-secondary" href="camera.html">Voir la caméra</a>
+      </div>
+    </div>
+    <div class="scene reveal" data-parallax>
+      <div class="layer-glow one" data-layer="-12"></div>
+      <div class="layer-glow two" data-layer="8"></div>
+      <div class="phone-shell" data-tilt>
+        <div class="phone-notch" aria-hidden="true"></div>
+        <div class="phone-frame">
+          <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=80" alt="Jarvis One affichant l'interface photo" width="900" height="1710" loading="eager" />
+          <div class="phone-reflect"></div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="orb orb-1"></div>
-          <div class="orb orb-2"></div>
-          <div class="device tilt" data-tilt>
-            <div class="shine"></div>
-            <div class="screen-glow"></div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section id="story" class="story reveal">
-        <h2>Built for focus. Tuned for wonder.</h2>
-        <p>
-          Aether One blends context-aware intelligence with a silent, fanless architecture. It learns your flow and adapts in real time, so every interaction feels immediate.
-        </p>
-      </section>
+  <section class="section reveal">
+    <div class="metrics">
+      <article class="metric"><strong>33 h</strong><span>Autonomie mixte réelle</span></article>
+      <article class="metric"><strong>4 nm</strong><span>Puce Jarvis A1 gravée en basse consommation</span></article>
+      <article class="metric"><strong>ProRAW 48 Mpx</strong><span>Détails nets même en faible lumière</span></article>
+    </div>
+  </section>
 
-      <section id="features" class="features">
-        <article class="card reveal">
-          <h3>Spatial Engine</h3>
-          <p>Responsive visuals with fluid depth mapping for smooth, natural motion.</p>
-        </article>
-        <article class="card reveal">
-          <h3>All-day Power</h3>
-          <p>Up to 24 hours battery life in a body thinner than ever before.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Adaptive Intelligence</h3>
-          <p>On-device AI personalization with secure context memory.</p>
-        </article>
-      </section>
+  <section class="section reveal">
+    <p class="section-kicker">Expérience quotidienne</p>
+    <h2 class="section-title">Pensé pour être rapide, discret et durable.</h2>
+    <div class="grid-2">
+      <article class="card"><h3>Matériaux premium</h3><p>Châssis aluminium brossé, verre renforcé et finition satinée anti-traces, pour une prise en main propre et sûre.</p></article>
+      <article class="card"><h3>Silence logiciel</h3><p>Animations fluides, notifications intelligentes, priorités contextuelles: vous restez concentré sur l'essentiel.</p></article>
+    </div>
+  </section>
+</main>
 
-      <section id="experience" class="experience reveal">
-        <div class="experience-panel">
-          <h2>Motion that respects attention.</h2>
-          <p>
-            Subtle by default. Dramatic when needed. Every animation is calibrated for performance and reduced-motion accessibility.
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Aether Labs. Built for tomorrow.</p>
-    </footer>
-  </body>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 Jarvis. Tous droits réservés.</span>
+    <div class="footer-links">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="contact.html">Support</a>
+    </div>
+  </div>
+</footer>
+</body>
 </html>
