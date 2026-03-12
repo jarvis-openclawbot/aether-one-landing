@@ -282,7 +282,8 @@ a { color: inherit; }
   --depth-y: 0px;
   --lens-shift-x: 0px;
   --lens-shift-y: 0px;
-  transform: translate3d(var(--lens-shift-x), calc(var(--depth-y) + var(--lens-shift-y)), 0) scale(1);
+  --lens-scale: 1;
+  transform: translate3d(var(--lens-shift-x), calc(var(--depth-y) + var(--lens-shift-y)), 0) scale(var(--lens-scale));
   transition: transform 700ms var(--motion-ease-soft), filter 500ms ease;
   will-change: transform, filter;
 }
@@ -367,8 +368,21 @@ textarea { min-height: 130px; resize: vertical; }
 .footer-links { display: flex; gap: 1rem; }
 .footer-links a { text-decoration: none; }
 
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform 1s cubic-bezier(.16,.84,.28,.98); }
-.reveal.in { opacity: 1; transform: none; }
+.reveal {
+  opacity: 0;
+  --reveal-delay: 0ms;
+  transform: translate3d(0, 26px, 0) scale(.985);
+  filter: blur(2px);
+  transition:
+    opacity var(--motion-reveal-duration) var(--motion-ease-soft) var(--reveal-delay),
+    transform var(--motion-reveal-duration) var(--motion-ease-smooth) var(--reveal-delay),
+    filter 700ms ease var(--reveal-delay);
+}
+.reveal.in { opacity: 1; transform: none; filter: blur(0); }
+
+.motion-depth {
+  transition: transform var(--motion-depth-duration) var(--motion-ease-soft), box-shadow .35s ease;
+}
 
 .section-kicker {
   color: #8b8b94;
@@ -511,6 +525,10 @@ textarea { min-height: 130px; resize: vertical; }
 .panel-light .section-kicker { color: #54545a; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes lensPulse {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50% { opacity: .9; transform: scale(1.02); }
+}
 
 @media (max-width: 980px) {
   .story-grid,
@@ -524,8 +542,19 @@ textarea { min-height: 130px; resize: vertical; }
   .nav-links { width: 100%; overflow: auto; }
   .subnav { top: 98px; }
   .form-row { grid-template-columns: 1fr; }
+
+  /* Mobile-safe degradation to avoid jank on small GPUs. */
+  .device,
+  .card,
+  .showcase img,
+  .camera-lens { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+  .motion-depth,
+  .device,
+  .card,
+  .showcase img,
+  .camera-lens { transform: none !important; }
 }
