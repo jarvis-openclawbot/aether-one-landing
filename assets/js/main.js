@@ -11,10 +11,15 @@ const pageMap = {
   'mentions-legales.html': 'mentions-legales'
 };
 
+const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+const saveData = Boolean(connection && connection.saveData);
+const lowBandwidth = Boolean(connection && /2g/.test(connection.effectiveType || ''));
+const lowPowerDevice = (navigator.deviceMemory && navigator.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+
 const MOTION = {
   reduced: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   touchLike: window.matchMedia('(pointer: coarse)').matches,
-  mobileWidth: window.matchMedia('(max-width: 760px)').matches,
+  mobileWidth: window.matchMedia('(max-width: 900px)').matches,
   revealThreshold: 0.18,
   revealRootMargin: '0px 0px -7% 0px',
   revealStaggerMs: 90,
@@ -28,7 +33,10 @@ const MOTION = {
 };
 
 const motionAllowed = !MOTION.reduced;
-const advancedMotionAllowed = motionAllowed && !MOTION.touchLike && !MOTION.mobileWidth;
+const performanceLite = saveData || lowBandwidth || lowPowerDevice;
+const advancedMotionAllowed = motionAllowed && !MOTION.touchLike && !MOTION.mobileWidth && !performanceLite;
+if (performanceLite) document.body.classList.add('performance-lite');
+
 const current = document.body.dataset.page || pageMap[location.pathname.split('/').pop()] || 'accueil';
 
 const header = document.querySelector('.site-header');
@@ -173,6 +181,97 @@ if (motionAllowed && reveals.length) {
   reveals.forEach((el) => io.observe(el));
 } else {
   reveals.forEach((el) => el.classList.add('in'));
+}
+
+const heroStage = document.querySelector('[data-phone3d]');
+const heroPhone = heroStage?.querySelector('.phone-shell');
+if (heroStage && heroPhone && advancedMotionAllowed) {
+  let tx = -9;
+  let ty = 12;
+  let lx = 0;
+  let ly = 0;
+  let cx = tx;
+  let cy = ty;
+  let crx = 0;
+  let cry = 0;
+  let raf;
+
+  const animateHero = () => {
+    cx += (tx - cx) * 0.08;
+    cy += (ty - cy) * 0.08;
+    crx += (lx - crx) * 0.09;
+    cry += (ly - cry) * 0.09;
+    heroStage.style.setProperty('--hero-tilt-x', `${cx.toFixed(2)}deg`);
+    heroStage.style.setProperty('--hero-tilt-y', `${cy.toFixed(2)}deg`);
+    heroStage.style.setProperty('--reflect-x', `${crx.toFixed(2)}px`);
+    heroStage.style.setProperty('--reflect-y', `${cry.toFixed(2)}px`);
+    heroStage.style.setProperty('--bump-sweep', `${Math.max(-120, Math.min(120, crx * 1.5)).toFixed(2)}%`);
+    raf = requestAnimationFrame(animateHero);
+  };
+
+  heroStage.addEventListener('pointermove', (e) => {
+    const r = heroStage.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    tx = -8 - py * 7;
+    ty = 10 + px * 16;
+    lx = px * 44;
+    ly = py * 30;
+  });
+
+  heroStage.addEventListener('pointerleave', () => {
+    tx = -9;
+    ty = 12;
+    lx = 0;
+    ly = 0;
+  });
+
+  window.addEventListener('scroll', () => {
+    const rect = heroStage.getBoundingClientRect();
+    const vh = window.innerHeight || 1;
+    const progress = Math.max(-1, Math.min(1, (rect.top + rect.height * 0.5 - vh * 0.5) / vh));
+    heroStage.style.setProperty('--hero-lift', `${(-progress * 10).toFixed(2)}px`);
+  }, { passive: true });
+
+  animateHero();
+  window.addEventListener('beforeunload', () => cancelAnimationFrame(raf));
+}
+
+const exploded = document.querySelector('[data-exploded]');
+if (exploded && !MOTION.reduced && !performanceLite) {
+  const layers = Array.from(exploded.querySelectorAll('.exploded-layer'));
+  const renderExploded = () => {
+    const rect = exploded.getBoundingClientRect();
+    const vh = window.innerHeight || 1;
+    const progress = Math.max(0, Math.min(1, 1 - (rect.top + rect.height * 0.2) / vh));
+    const gap = 8 + progress * 30;
+    exploded.style.setProperty('--explode-gap', `${gap.toFixed(2)}px`);
+    const centerOffset = (layers.length - 1) / 2;
+    layers.forEach((layer, i) => {
+      const index = i - centerOffset;
+      const drift = index * progress * 1.8;
+      layer.style.transform = `translate3d(-50%, -50%, 0) rotateX(58deg) rotateZ(-15deg) translateY(${(gap * index + drift).toFixed(2)}px)`;
+    });
+  };
+  window.addEventListener('scroll', () => requestAnimationFrame(renderExploded), { passive: true });
+  renderExploded();
+}
+
+const cinematicSteps = Array.from(document.querySelectorAll('[data-cinematic-step]'));
+if (cinematicSteps.length && motionAllowed && !performanceLite) {
+  const updateCinematic = () => {
+    const vh = window.innerHeight || 1;
+    cinematicSteps.forEach((step) => {
+      const rect = step.getBoundingClientRect();
+      const center = rect.top + rect.height * 0.5;
+      const near = Math.abs(center - vh * 0.52) < vh * 0.3;
+      step.classList.toggle('is-stage', near);
+    });
+  };
+  window.addEventListener('scroll', () => requestAnimationFrame(updateCinematic), { passive: true });
+  updateCinematic();
+} else {
+  cinematicSteps.forEach((s) => s.classList.add('is-stage'));
 }
 
 const device = document.querySelector('[data-tilt] .device') || document.querySelector('[data-tilt]');

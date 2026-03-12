@@ -1,16 +1,22 @@
 const gallery = document.getElementById('gallery-image');
 const sceneButtons = document.querySelectorAll('[data-scene]');
-const lens = document.querySelector('.camera-lens, .lens-stack');
+const lens = document.querySelector('[data-lens-3d], .camera-lens, .lens-stack');
+
+const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+const saveData = Boolean(connection && connection.saveData);
+const lowBandwidth = Boolean(connection && /2g/.test(connection.effectiveType || ''));
+const lowPowerDevice = (navigator.deviceMemory && navigator.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
 const CAMERA_MOTION = {
   reduced: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   touchLike: window.matchMedia('(pointer: coarse)').matches,
-  mobileWidth: window.matchMedia('(max-width: 760px)').matches,
+  mobileWidth: window.matchMedia('(max-width: 900px)').matches,
   lensShiftMax: 9,
-  lensLerp: 0.1
+  lensLerp: 0.1,
+  lite: saveData || lowBandwidth || lowPowerDevice
 };
 
-const lensMotionAllowed = !CAMERA_MOTION.reduced && !CAMERA_MOTION.touchLike && !CAMERA_MOTION.mobileWidth;
+const lensMotionAllowed = !CAMERA_MOTION.reduced && !CAMERA_MOTION.touchLike && !CAMERA_MOTION.mobileWidth && !CAMERA_MOTION.lite;
 
 if (gallery && sceneButtons.length) {
   const scenes = [
@@ -29,9 +35,9 @@ if (gallery && sceneButtons.length) {
       if (!CAMERA_MOTION.reduced && gallery.animate) {
         gallery.animate([
           { opacity: 1, transform: 'scale(1)' },
-          { opacity: 0.45, transform: 'scale(1.012)' },
+          { opacity: 0.5, transform: 'scale(1.015)' },
           { opacity: 1, transform: 'scale(1)' }
-        ], { duration: 420, easing: 'cubic-bezier(.22,.61,.36,1)' });
+        ], { duration: 440, easing: 'cubic-bezier(.22,.61,.36,1)' });
       }
 
       const next = new Image();
@@ -50,9 +56,11 @@ if (lens && lensMotionAllowed) {
 
   const renderLens = () => {
     const progress = latestProgress;
-    lens.style.filter = `saturate(${1 + progress * 0.24}) brightness(${1 + progress * 0.04})`;
-    lens.style.setProperty('--lens-scale', (0.96 + progress * 0.08).toFixed(3));
-    lens.style.setProperty('--depth-y', `${(progress * -6).toFixed(2)}px`);
+    lens.style.filter = `saturate(${1 + progress * 0.25}) brightness(${1 + progress * 0.06}) contrast(${1 + progress * 0.05})`;
+    lens.style.setProperty('--lens-scale', (0.97 + progress * 0.09).toFixed(3));
+    lens.style.setProperty('--depth-y', `${(progress * -8).toFixed(2)}px`);
+    const sweepX = -100 + progress * 220;
+    lens.style.setProperty('--bump-sweep', `${sweepX.toFixed(2)}%`);
     rafScheduled = false;
   };
 
